@@ -1,0 +1,30 @@
+<app-base>
+
+</app-base>
+<ng-container *ngIf="logged">
+  CREATE CONTACT:
+  <div>
+    <input type="text" [(ngModel)]="name" />
+    <input type="text" [(ngModel)]="phone" />
+    <button (click)="createContact()">Create</button>
+  </div>
+
+  Contacts
+  <ng-container *ngIf="!loading">
+    Loading...
+  </ng-container>
+
+  <ng-container *ngIf="loading">
+    <div>
+      <div *ngFor="let c of contacts">
+        <input type="text" [(ngModel)]="c.name" />
+        <input type="text" [(ngModel)]="c.phone" />
+        <span style="color: red" (click)="deleteContact(c)"> Удалить</span>
+        <span style="color: green" (click)="updateContact(c)"> Изменить</span>
+      </div>
+    </div>
+  </ng-container>
+
+  <br/>
+
+</ng-container>
