@@ -8,17 +8,17 @@ import {ProviderService} from '../shared/services/provider.service';
 })
 export class LoginComponent implements OnInit {
 
-  public username = ''
-  public password = ''
+  public username = '';
+  public password = '';
 
   constructor(private provider: ProviderService) { }
 
   ngOnInit() {
   }
 
-  login(){
-    if (this.username != '' && this.password != ''){
-      this.provider.login(this.username, this.password)
+  login() {
+    if (this.username !== '' && this.password !== '') {
+      this.provider.login(this.username, this.password);
     }
   }
 

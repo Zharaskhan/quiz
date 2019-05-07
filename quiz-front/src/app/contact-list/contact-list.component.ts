@@ -10,22 +10,17 @@ import {IContact} from '../shared/models';
 export class ContactListComponent implements OnInit {
   public contacts: IContact[] = [];
   public loading = false;
-  public logged = false;
-
   public name: any = '';
   public phone: any = '';
+  public logged = false;
 
 
   constructor(private provider: ProviderService) { }
 
   ngOnInit() {
+    this.logged = this.provider.isAuthenticated();
 
-    const token = localStorage.getItem('token');
-    if (token) {
-      this.logged = true;
-    }
-
-    if (this.logged) {
+    if (this.logged === true) {
       this.provider.getContacts().then(res => {
         this.contacts = res;
         setTimeout(() => {
@@ -54,7 +49,7 @@ export class ContactListComponent implements OnInit {
     if (this.name !== '' && this.phone !== '') {
       this.provider.createContact(this.name, this.phone).then(res => {
         this.name = '';
-        this.phone = ''
+        this.phone = '';
         this.contacts.push(res);
       });
     }

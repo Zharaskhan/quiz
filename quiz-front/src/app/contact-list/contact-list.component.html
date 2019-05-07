@@ -1,7 +1,7 @@
 <app-base>
 
 </app-base>
-<ng-container *ngIf="logged">
+<ng-container *ngIf="provider.isAuthenticated()">
   CREATE CONTACT:
   <div>
     <input type="text" [(ngModel)]="name" />
@@ -19,8 +19,8 @@
       <div *ngFor="let c of contacts">
         <input type="text" [(ngModel)]="c.name" />
         <input type="text" [(ngModel)]="c.phone" />
-        <span style="color: red" (click)="deleteContact(c)"> Удалить</span>
-        <span style="color: green" (click)="updateContact(c)"> Изменить</span>
+        <button style="color: red" (click)="deleteContact(c)"> Удалить</button>
+        <button style="color: green" (click)="updateContact(c)"> Изменить</button>
       </div>
     </div>
   </ng-container>

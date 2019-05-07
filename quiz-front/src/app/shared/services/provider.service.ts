@@ -46,13 +46,13 @@ export class ProviderService extends MainService {
   }
 
   updateContact(contact: IContact): Promise<IContact> {
-    return this.put(`http://localhost:8000/api/posts/${contact.id}/`, {
+    return this.put(`http://localhost:8000/api/contacts/${contact.id}/`, {
       name: contact.name,
       phone: contact.phone
     });
   }
 
   deleteContact(id: number): Promise<any> {
-    return this.delet(`http://localhost:8000/api/posts/${id}/`, {});
+    return this.delet(`http://localhost:8000/api/contacts/${id}/`, {});
   }
 }
